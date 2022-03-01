@@ -1,0 +1,228 @@
+/* -------------Table of contents----------
+
+1. Typography
+2. Layouts
+3. Image-containers
+4. Buttons
+5. Media Query
+
+-----------------------------------------*/
+
+/* ================
+      CSS Reset
+    ===============*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --Pale-Blue: hsl(243, 100%, 93%);
+  --Grayish-Blue: hsl(229, 7%, 55%);
+  --Dark-Blue: hsl(228, 56%, 26%);
+  --Very-Dark-Blue: hsl(229, 57%, 11%);
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+}
+body,
+html {
+  background-image: url(images/bg-mobile.png);
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ================
+      Layouts
+    ===============*/
+.wrapper {
+  margin: 0 auto;
+  width: min(85%, 1000px);
+}
+.grid {
+  display: grid;
+  gap: 1em;
+}
+.first__container {
+  background-color: var(--Dark-Blue);
+  padding: 2.3em;
+  border-radius: 10px 100px 10px 10px;
+}
+.second__container {
+  background-color: var(--Dark-Blue);
+  padding: 2.3em;
+  border-radius: 10px 10px 10px 10px;
+  position: relative;
+}
+.three__elements__flex {
+  display: flex;
+  gap: 1em;
+}
+.slider {
+  background-color: var(--Very-Dark-Blue);
+  height: calc(1em + 6px);
+  border-radius: 20px;
+  position: relative;
+  text-align: center;
+  margin: 1em 0 0.5em;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(
+    to right,
+    hsl(6, 100%, 80%),
+    hsl(335, 100%, 65%)
+  );
+  width: 70%;
+  height: calc(1em + 6px);
+  inset: 0;
+  border: 3px solid var(--Very-Dark-Blue);
+  border-radius: 20px;
+}
+.slider::after {
+  content: "";
+  border-radius: 50%;
+  background-color: var(--Pale-Blue);
+  position: absolute;
+  aspect-ratio: 1;
+  height: 0.9em;
+  top: 4px;
+  left: calc(68% - 0.9em);
+}
+.space__center {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+.white__container {
+  background-color: white;
+  width: min(55%, 200px);
+  border-radius: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 0.9em 0;
+  position: absolute;
+  top: 8.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+/* ================
+      Typography
+    ===============*/
+.second__container__title {
+  color: var(--Grayish-Blue);
+  font-size: 14px;
+  text-align: center;
+  font-weight: 700;
+}
+.space__center__desc {
+  color: var(--Pale-Blue);
+  font-weight: 600;
+  font-size: 14px;
+}
+.white__container__desc {
+  font-weight: 700;
+  color: var(--Very-Dark-Blue);
+  font-size: 2.5rem;
+}
+.white__container__desc2 {
+  font-size: 0.8rem;
+  color: var(--Grayish-Blue);
+  font-weight: 700;
+}
+/* ================
+       Image-containers
+    ===============*/
+.logo {
+  margin-bottom: 1.9em;
+}
+.img__container {
+  background-color: var(--Very-Dark-Blue);
+  padding: 0.8em;
+  display: inline-block;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+/* ================
+      Buttons
+    ===============*/
+
+/* ================
+      Media Query
+    ===============*/
+@media (min-width: 900px) {
+  body {
+    background-color: var(--Very-Dark-Blue);
+    background-image: url(images/bg-desktop.png);
+    background-position: bottom;
+    background-size: 100vw, 100vh;
+    font-size: 19px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2em;
+    grid-template-areas:
+      "first ."
+      "first second"
+      "first second"
+      "first second";
+  }
+  .first__container {
+    width: 100%;
+    grid-area: first;
+  }
+  .second__container {
+    width: 100%;
+    grid-area: second;
+  }
+  .white__container {
+    border-radius: 10px;
+    left: 304px;
+    top: -50px;
+    transform: translate(0);
+    padding: 0.9em 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+  }
+  .white__container::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 25px solid transparent;
+    border-top: 0;
+    border-bottom: 25px solid white;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 166px;
+    top: 68px;
+  }
+  .slider::after {
+    left: calc(69% - 0.9em);
+  }
+  .space__center {
+    margin: 0;
+  }
+  .second__container__title {
+    text-align: left;
+  }
+}
